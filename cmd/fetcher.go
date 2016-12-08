@@ -93,7 +93,7 @@ func main() {
 			for url, _ := range seenUrls {
 				urls = append(urls, fetcher.Url{Url: url, TimeStamp: time.Now().Format(time.RFC3339)})
 			}
-			fetcher.Render(urls)
+			fetcher.Render(os.Stdout, urls)
 			os.Exit(0)
 		}
 	}

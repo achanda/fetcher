@@ -1,7 +1,7 @@
 package fetcher
 
 import (
-	"os"
+	"io"
 	"text/template"
 )
 
@@ -18,7 +18,11 @@ const templateText = `
 </urlset>
 `
 
-func Render(urls []Url) {
+func Render(wr io.Writer, urls []Url) error {
 	t := template.Must(template.New("sitemap").Parse(templateText))
-	t.Execute(os.Stdout, urls)
+	err := t.Execute(wr, urls)
+	if err != nil {
+		return err
+	}
+	return nil
 }
