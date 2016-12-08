@@ -42,6 +42,6 @@ func TestRender(t *testing.T) {
 	gotLines := strings.Count(b.String(), "\n")
 	expectedLines := strings.Count(expected, "\n")
 	if gotLines != expectedLines {
-		t.Errorf("Expected %s lines, got %s lines", expectedLines, gotLines)
+		t.Errorf("Expected %v lines, got %v lines", expectedLines, gotLines)
 	}
 }
