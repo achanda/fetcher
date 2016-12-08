@@ -51,6 +51,9 @@ func crawl(uri string, ch chan string, chFinished chan bool) {
 			}
 
 			eurl := fetcher.ExtractLink(t)
+			if eurl == "" {
+				continue
+			}
 			extractedUrl, _ := url.Parse(eurl)
 
 			// Ignore external or relative links
